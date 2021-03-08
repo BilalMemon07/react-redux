@@ -2,27 +2,26 @@
 ///// this is global state / redux store 
 
 const INITIAL_STATE = {
-    users: [{
-        name: 'Bilal',
-        emial: 'bilal@gmail.com'
-    },
-    {
-        name: 'Basit',
-        email: 'basit@gmail.com'
-    }
-
-    ]
+        user: [],
+        current_user:{}
 }
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'SETDATA':
+        case 'SETUSER':
             return ({
                 ...state,
-                users: [...state.users, action.data]
+                current_user:action.payload
             })
-        default:
-            return state;
-
-    }
+        case 'SETFIREBASEDATA':
+             return({
+                    ...state,
+                     user:action.payload
+                    })    
+                    
+                    
+                }
+                return state;
 }
+
+
